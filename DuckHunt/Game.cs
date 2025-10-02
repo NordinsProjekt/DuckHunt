@@ -45,7 +45,6 @@ public class Game
                 case "quit":
                     PlayerQuits();
                     return false;
-                    break;
                 default: throw new NotImplementedException();
             }
         }
@@ -89,7 +88,8 @@ public class Game
             return;
         }
 
-        var duck = new Duck();
+        var duckHp = _rnd.Next(0, 2) + 1;
+        var duck = new Duck(duckHp);
         _ducks.Push(duck);
         _consoleWriter.DuckAppears(duck);
         CreateTimer();

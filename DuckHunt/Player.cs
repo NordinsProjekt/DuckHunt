@@ -16,8 +16,8 @@ public class Player(ConsoleWriter ConsoleWriter)
             var hpLeft = duck.Hit();
             if (hpLeft <= 0)
             {
-                Score++;
-                Console.WriteLine($"You shot the duck! Your score is {Score}");
+                Score+= duck.GetScore();
+                Console.WriteLine($"You killed the duck! Your score is {Score}");
             }
             else
             {

@@ -7,7 +7,9 @@ namespace DuckHunt;
 public class Duck(int hp = 1, string appearText = "Quack! Quack")
 {
     private readonly string _appearText = appearText;
-    private int Hp { get; set; } = hp;
+    private int startHp { get; set; } = hp;
+    private int currentHp { get; set; } = hp;
+    private int Score { get; set; } = 1;
 
 
     public string Speak()
@@ -17,6 +19,11 @@ public class Duck(int hp = 1, string appearText = "Quack! Quack")
 
     public int Hit()
     {
-        return --Hp;
+        return --currentHp;
+    }
+
+    public int GetScore()
+    {
+        return Score*startHp;
     }
 }
