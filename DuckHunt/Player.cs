@@ -1,0 +1,50 @@
+﻿using DuckHunt.ScreenWriters;
+
+namespace DuckHunt;
+
+public class Player(ConsoleWriter ConsoleWriter)
+{
+    private int Ammo { get; set; } = 2;
+    private int Score { get; set; } = 0;
+
+    public int Shoot(Duck duck)
+    {
+        if (Ammo > 0)
+        {
+            Ammo--;
+            Console.WriteLine($"Bang! You have {Ammo} bullets left.");
+            var hpLeft = duck.Hit();
+            if (hpLeft <= 0)
+            {
+                Score++;
+                Console.WriteLine($"You shot the duck! Your score is {Score}");
+            }
+            else
+            {
+                Console.WriteLine($"The duck has {hpLeft} HP left.");
+                return hpLeft;
+            }
+        }
+        else
+        {
+            Score--;
+            Console.WriteLine($"Click! You have no bullets left and your score is {Score}");
+        }
+
+        return -1;
+    }
+
+    public void Reload()
+    {
+        if (Ammo != 0)
+        {
+            Score--;
+            Console.WriteLine($"You still have {Ammo} bullets left, you lose 1 point. Your score is {Score}");
+            return;
+        }
+
+        Ammo = 2;
+        Console.WriteLine($"You reload the shotgun. Your score is {Score}");
+    }
+
+}
