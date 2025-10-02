@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DuckHunt.Validators;
+﻿namespace DuckHunt.Validators;
 
 public class InputValidator(HashSet<string> validInputs)
 {
