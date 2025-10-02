@@ -32,8 +32,8 @@ public class Game
 
     private bool PlayerInput(string? input)
     {
+        _consoleWriter.DrawGameScreen();
         if (InputValidator.ValidateInput(input))
-        {
             switch (input)
             {
                 case "bang":
@@ -47,12 +47,9 @@ public class Game
                     return false;
                 default: throw new NotImplementedException();
             }
-        }
-        else
-        {
-            _consoleWriter.WrongCommand();
-        }
+        else _consoleWriter.WrongCommand();
 
+        _consoleWriter.AddScoreToGameScreen(Player.GetScore());
         return true;
     }
 

@@ -16,8 +16,8 @@ public class Player(ConsoleWriter ConsoleWriter)
             var hpLeft = duck.Hit();
             if (hpLeft <= 0)
             {
-                Score+= duck.GetScore();
-                Console.WriteLine($"You killed the duck! Your score is {Score}");
+                Score += duck.GetScore();
+                Console.WriteLine("You killed the duck!");
             }
             else
             {
@@ -28,7 +28,7 @@ public class Player(ConsoleWriter ConsoleWriter)
         else
         {
             Score--;
-            Console.WriteLine($"Click! You have no bullets left and your score is {Score}");
+            Console.WriteLine("Click! You have no bullets left");
         }
 
         return -1;
@@ -39,12 +39,16 @@ public class Player(ConsoleWriter ConsoleWriter)
         if (Ammo != 0)
         {
             Score--;
-            Console.WriteLine($"You still have {Ammo} bullets left, you lose 1 point. Your score is {Score}");
+            Console.WriteLine($"You still have {Ammo} bullets left, you lose 1 point.");
             return;
         }
 
         Ammo = 2;
-        Console.WriteLine($"You reload the shotgun. Your score is {Score}");
+        Console.WriteLine("You reload the shotgun.");
     }
 
+    public int GetScore()
+    {
+        return Score;
+    }
 }
